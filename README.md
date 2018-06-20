@@ -6,22 +6,12 @@ Short a url given.
 
 ## Setup
 
-```
-git clone git@github.com:angela4713/content-indexer.git
-```
-
-## Run bundle
-
-```
-bundle install
-```
-
 ## Tests
 
 Run all the tests
 
 ```
-bundle exec rspec
+docker-compose run app rake spec
 ```
 
 ## Usage
@@ -29,7 +19,7 @@ bundle exec rspec
 Run the application
 
 ```
-rails s
+docker run -p 4000:80 angela4713/url-shortener_app:part1
 ```
 
 ## Methods
