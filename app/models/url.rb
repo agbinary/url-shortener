@@ -2,7 +2,7 @@
 class Url < ApplicationRecord
   validates :original, uniqueness: true, presence: true, url: true
 
-  def shortener
+  def shorten
     ShortUrlCreator.call(self)
   end
 end

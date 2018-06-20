@@ -5,7 +5,7 @@ module API
       def shorten
         url = Url.new(url_params)
         if url.save
-          url.shortener
+          url.shorten
           render json: url, root: 'url', adapter: :json, status: :ok
         else
           render json: url.errors.messages, status: :unprocessable_entity
