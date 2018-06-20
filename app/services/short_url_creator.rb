@@ -7,16 +7,14 @@ class ShortUrlCreator < ApplicationService
   end
 
   def call
-    generate_short_url
+    url.update(shortened: generate_short_url)
   end
 
   private
 
   def generate_short_url
     chars = generate_possible_chars
-    short_url = (0...7).map { chars[rand(chars.length)] }.join
-
-    url.update(shortened: short_url)
+    (0...7).map { chars[rand(chars.length)] }.join
   end
 
   def generate_possible_chars
