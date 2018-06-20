@@ -1,24 +1,73 @@
-# README
+# Url Shortener
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Short a url given.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+```
+git clone git@github.com:angela4713/content-indexer.git
+```
 
-* System dependencies
+## Run bundle
 
-* Configuration
+```
+bundle install
+```
 
-* Database creation
+## Tests
 
-* Database initialization
+Run all the tests
 
-* How to run the test suite
+```
+bundle exec rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Usage
 
-* Deployment instructions
+Run the application
 
-* ...
+```
+rails s
+```
+
+## Methods
+
+### create short url
+
+Saves the original Url and creates a short url.
+
+** Endpoint: **
+
+`POST /api/v1/urls/shorten`
+
+** Request example: **
+
+```rb
+{
+  "url": {
+    "original": "fgfdshdffsdfg"
+  }
+}
+```
+
+** Response example: **
+
+```
+{
+  "url": {
+    "original": "https://github.com/rspec/rspec-rails",
+    "shortened": "http://localhost:3000/DfHQoDV"
+  }
+}
+```
+
+### open short url
+
+Receive the short url and open the original one.
+** Endpoint: **
+
+`GET :shortened_url`
+
+** Response: **
+
+Original Website.
