@@ -2,6 +2,8 @@
 
 Short a url given.
 
+**Note:** I recommend use `localhost:3000` as main port, as it is configured this way in the environment files.
+
 ## Setup
 
 ```
@@ -45,7 +47,7 @@ Saves the original Url and creates a short url.
 ```rb
 {
   "url": {
-    "original": "fgfdshdffsdfg"
+    "original": "https://github.com/rspec/rspec-rails"
   }
 }
 ```
