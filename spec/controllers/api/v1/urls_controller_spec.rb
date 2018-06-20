@@ -17,6 +17,8 @@ describe API::V1::UrlsController, type: :controller do
     }
   end
 
+  let(:response_body) { JSON.parse(response.body) }
+
   describe '#shorten' do
     context 'when payload is valid' do
       it 'saves the record in the database' do
@@ -28,9 +30,13 @@ describe API::V1::UrlsController, type: :controller do
       it 'creates and saves the shorten url' do
         post :shorten, params: valid_url_params
 
-        response_body = JSON.parse(response.body)
-
         expect(response_body['url']['shortened']).not_to be_empty
+      end
+
+      it 'responds with successful status' do
+        post :shorten, params: valid_url_params
+
+        expect(response).to have_http_status 200
       end
     end
 
@@ -39,6 +45,12 @@ describe API::V1::UrlsController, type: :controller do
         expect do
           post :shorten, params: invalid_url_params
         end.to change(Url, :count).by(0)
+      end
+
+      it 'responds with unsuccessful status' do
+        post :shorten, params: invalid_url_params
+
+        expect(response).to have_http_status 422
       end
     end
   end
